@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 import numpy as np
+from sklearn.linear_model import Ridge
 
 train = pd.read_csv("BT2024076_train_var1.csv")
 test = pd.read_csv("BT2024076_test_var1.csv")
@@ -15,7 +16,7 @@ poly = PolynomialFeatures(degree=degree)
 X_train_poly = poly.fit_transform(X)
 X_test_poly = poly.transform(X_test)
 
-model = LinearRegression()
+model = Ridge(alpha=2.4)
 
 model.fit(X_train_poly, y)
 y_pred = model.predict(X_test_poly) 
